@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["kakyoin.hierophant@gmail.com"]
   spec.summary       = %q{make easier to access first element attribute after #max_by or #min_by}
   spec.description   = %q{make easier to access first element attribute after #max_by or #min_by}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/joker1007/max_value"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
