@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = MaxValue::VERSION
   spec.authors       = ["joker1007"]
   spec.email         = ["kakyoin.hierophant@gmail.com"]
-  spec.summary       = %q{helper methods of accesse attribute after max / min}
-  spec.description   = %q{helper methods of accesse attribute after max / min}
+  spec.summary       = %q{make easier to access first element attribute after #max_by or #min_by}
+  spec.description   = %q{make easier to access first element attribute after #max_by or #min_by}
   spec.homepage      = ""
   spec.license       = "MIT"
 
