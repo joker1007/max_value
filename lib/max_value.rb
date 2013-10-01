@@ -18,7 +18,7 @@ module Enumerable
     sorter = block ? block : sym
     sorted = sort_by(&sorter)
     if is_a?(Enumerator::Lazy)
-      sorted.lazy.map(&:sym)
+      sorted.lazy.map(&sym)
     else
       sorted.map(&sym)
     end
