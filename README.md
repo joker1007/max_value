@@ -18,22 +18,32 @@ And then execute:
 
 ```ruby
 array = [
-    Hashie::Mash.new({id: 1, name: "name_c"}),
-    Hashie::Mash.new({id: 2, name: "name_a"}),
-    Hashie::Mash.new({id: 3, name: "name_z"}),
-    Hashie::Mash.new({id: 4, name: "name_b"}),
+  Hashie::Mash.new({id: 1, name: "name_c"}),
+  Hashie::Mash.new({id: 2, name: "name_a"}),
+  Hashie::Mash.new({id: 3, name: "name_z"}),
+  Hashie::Mash.new({id: 4, name: "name_b"}),
 ]
 
-# before
-array.max_by(&:id).id # => 4  so bad!
+hash_array = [
+  {id: 1, name: "name_c"},
+  {id: 2, name: "name_a"},
+  {id: 3, name: "name_z"},
+  {id: 4, name: "name_b"},
+]
 
-# after
-array.max_value(:id) # => 4  so cool!
+# before (so bad!!)
+array.max_by(&:id).id               # => 4
+hash_array.max_by {|h| h[:id]}[:id] # => 4
+
+# after (so cool!!)
+array.max_value(:id)      # => 4
+hash_array.max_value(:id) # => 4
 
 # more example
-array.min_value(:id, &:name)       # => 2 min_by(&:name) and access to id
-array.sort_value(:id, &:name)      # => [2, 4, 1, 3] sort_by(&:name) and map by id
-array.lazy.sort_value(:id, &:name) # => [2, 4, 1, 3] sort_by(&:name) and map by id
+array.min_value(:id, &:name)             # => 2 min_by(&:name) and access to id
+hash_array.min_value(:id) {|h| h[:name]} # => 2
+array.sort_value(:id, &:name)            # => [2, 4, 1, 3] sort_by(&:name) and map by id
+array.lazy.sort_value(:id, &:name)       # => Enumerator::Lazy sort_by(&:name).lazy.map(&:id)
 ```
 
 ## Contributing
